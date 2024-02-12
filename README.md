@@ -1,4 +1,4 @@
-# Training Series 
+# Transdisciplinary Institute in Applied Data Sciences Training Series 
 
 ## Introduction to Text Analysis 
 
