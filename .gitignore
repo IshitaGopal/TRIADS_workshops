@@ -1,10 +1,16 @@
+@ -1,243 +0,0 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,macos,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,macos,windows
 # Ignore folders
-llm_bruce
+llm_workshop
+references
 llm_transfer_learning
 PDS
 llm_workshop/fintuned_DistilBert_model
+
+# Ignore Notes files
+
+*.Notes.R
 
 # Ignore PowerPoint files
 *.ppt
