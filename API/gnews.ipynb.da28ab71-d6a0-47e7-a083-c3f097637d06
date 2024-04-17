@@ -1,0 +1,333 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 33,
+   "id": "b53dc42d-5ecb-41d0-bd89-53c71262316e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import gnews\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "674129c8-7635-499b-a30d-2ac6cfa4783a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'title': \"Muhammad Aurangzeb: From JPMorgan to Pakistan's Finance Minister With No Pay - Bloomberg\", 'description': \"Muhammad Aurangzeb: From JPMorgan to Pakistan's Finance Minister With No Pay  Bloomberg\", 'published date': 'Tue, 09 Apr 2024 00:00:00 GMT', 'url': 'https://news.google.com/rss/articles/CBMifmh0dHBzOi8vd3d3LmJsb29tYmVyZy5jb20vbmV3cy9hcnRpY2xlcy8yMDI0LTA0LTA5L211aGFtbWFkLWF1cmFuZ3plYi1mcm9tLWpwbW9yZ2FuLXRvLXBha2lzdGFuLXMtZmluYW5jZS1taW5pc3Rlci13aXRoLW5vLXBhedIBAA?oc=5&hl=en-US&gl=US&ceid=US:en', 'publisher': {'href': 'https://www.bloomberg.com', 'title': 'Bloomberg'}}\n"
+     ]
+    }
+   ],
+   "source": [
+    "from gnews import GNews\n",
+    "\n",
+    "google_news = GNews()\n",
+    "pakistan_news = google_news.get_news('Pakistan')\n",
+    "print(pakistan_news[0])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 44,
+   "id": "af510ad1-59b6-46b2-a061-89e073133f8e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "google_news = GNews(language='en', country='US', period='7d', start_date=(2024, 4, 8), end_date=None, max_results=100)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "id": "5d8f47c9-a784-48fd-8404-361fcb799ea9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "/var/folders/j_/8n8c0qk56qxfpr673433675c0000gn/T/ipykernel_5721/58847075.py:1: UserWarning: \n",
+      "Period (7d) will be ignored in favour of the start and end dates\n",
+      "  recession_news = google_news.get_news('economy')\n"
+     ]
+    }
+   ],
+   "source": [
+    "recession_news = google_news.get_news('economy')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "id": "5e018522-94b0-4507-82f5-99ee9162a8a3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df = pd.DataFrame(recession_news)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 47,
+   "id": "97062d30-e0a5-44db-b4bd-aad5f1b3bbc3",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>title</th>\n",
+       "      <th>description</th>\n",
+       "      <th>published date</th>\n",
+       "      <th>url</th>\n",
+       "      <th>publisher</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>Opinion | Good Economy, Negative Vibes: The St...</td>\n",
+       "      <td>Opinion | Good Economy, Negative Vibes: The St...</td>\n",
+       "      <td>Mon, 08 Apr 2024 23:00:08 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMiPWh0d...</td>\n",
+       "      <td>{'href': 'https://www.nytimes.com', 'title': '...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>Oil price surge is the No. 1 threat to the US ...</td>\n",
+       "      <td>Oil price surge is the No. 1 threat to the US ...</td>\n",
+       "      <td>Mon, 08 Apr 2024 10:00:00 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMiVGh0d...</td>\n",
+       "      <td>{'href': 'https://www.cnn.com', 'title': 'CNN'}</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>The Japanese economy would not mind higher int...</td>\n",
+       "      <td>The Japanese economy would not mind higher int...</td>\n",
+       "      <td>Tue, 09 Apr 2024 08:14:04 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMib2h0d...</td>\n",
+       "      <td>{'href': 'https://www.cnbc.com', 'title': 'CNBC'}</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>Higher for Longer After All? Investors See Fed...</td>\n",
+       "      <td>Higher for Longer After All? Investors See Fed...</td>\n",
+       "      <td>Tue, 09 Apr 2024 09:02:43 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMiYWh0d...</td>\n",
+       "      <td>{'href': 'https://www.nytimes.com', 'title': '...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>Commodities Rally Reflects a Better Economy, b...</td>\n",
+       "      <td>Commodities Rally Reflects a Better Economy, b...</td>\n",
+       "      <td>Tue, 09 Apr 2024 04:03:00 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMigwFod...</td>\n",
+       "      <td>{'href': 'https://www.wsj.com', 'title': 'The ...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>...</th>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "      <td>...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>94</th>\n",
+       "      <td>Population stagnation will affect Oregon’s fut...</td>\n",
+       "      <td>Population stagnation will affect Oregon’s fut...</td>\n",
+       "      <td>Mon, 08 Apr 2024 16:24:57 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMiWmh0d...</td>\n",
+       "      <td>{'href': 'https://www.koin.com', 'title': 'KOI...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>95</th>\n",
+       "      <td>GOP leaders literally speechless following gre...</td>\n",
+       "      <td>GOP leaders literally speechless following gre...</td>\n",
+       "      <td>Mon, 08 Apr 2024 13:20:18 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMib2h0d...</td>\n",
+       "      <td>{'href': 'https://www.msnbc.com', 'title': 'MS...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>96</th>\n",
+       "      <td>Global Trade and Economy | USA Wealth Report 2...</td>\n",
+       "      <td>Global Trade and Economy | USA Wealth Report 2...</td>\n",
+       "      <td>Mon, 08 Apr 2024 10:34:19 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMiZmh0d...</td>\n",
+       "      <td>{'href': 'https://www.henleyglobal.com', 'titl...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>97</th>\n",
+       "      <td>Jamie Dimon, Goldman Sachs weigh in on economy...</td>\n",
+       "      <td>Jamie Dimon, Goldman Sachs weigh in on economy...</td>\n",
+       "      <td>Tue, 09 Apr 2024 01:03:00 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMipAFod...</td>\n",
+       "      <td>{'href': 'https://www.rockdalenewtoncitizen.co...</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>98</th>\n",
+       "      <td>Oil price surge is the No. 1 threat to the US ...</td>\n",
+       "      <td>Oil price surge is the No. 1 threat to the US ...</td>\n",
+       "      <td>Mon, 08 Apr 2024 21:45:00 GMT</td>\n",
+       "      <td>https://news.google.com/rss/articles/CBMinQFod...</td>\n",
+       "      <td>{'href': 'https://www.wfaa.com', 'title': 'WFA...</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "<p>99 rows × 5 columns</p>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "                                                title  \\\n",
+       "0   Opinion | Good Economy, Negative Vibes: The St...   \n",
+       "1   Oil price surge is the No. 1 threat to the US ...   \n",
+       "2   The Japanese economy would not mind higher int...   \n",
+       "3   Higher for Longer After All? Investors See Fed...   \n",
+       "4   Commodities Rally Reflects a Better Economy, b...   \n",
+       "..                                                ...   \n",
+       "94  Population stagnation will affect Oregon’s fut...   \n",
+       "95  GOP leaders literally speechless following gre...   \n",
+       "96  Global Trade and Economy | USA Wealth Report 2...   \n",
+       "97  Jamie Dimon, Goldman Sachs weigh in on economy...   \n",
+       "98  Oil price surge is the No. 1 threat to the US ...   \n",
+       "\n",
+       "                                          description  \\\n",
+       "0   Opinion | Good Economy, Negative Vibes: The St...   \n",
+       "1   Oil price surge is the No. 1 threat to the US ...   \n",
+       "2   The Japanese economy would not mind higher int...   \n",
+       "3   Higher for Longer After All? Investors See Fed...   \n",
+       "4   Commodities Rally Reflects a Better Economy, b...   \n",
+       "..                                                ...   \n",
+       "94  Population stagnation will affect Oregon’s fut...   \n",
+       "95  GOP leaders literally speechless following gre...   \n",
+       "96  Global Trade and Economy | USA Wealth Report 2...   \n",
+       "97  Jamie Dimon, Goldman Sachs weigh in on economy...   \n",
+       "98  Oil price surge is the No. 1 threat to the US ...   \n",
+       "\n",
+       "                   published date  \\\n",
+       "0   Mon, 08 Apr 2024 23:00:08 GMT   \n",
+       "1   Mon, 08 Apr 2024 10:00:00 GMT   \n",
+       "2   Tue, 09 Apr 2024 08:14:04 GMT   \n",
+       "3   Tue, 09 Apr 2024 09:02:43 GMT   \n",
+       "4   Tue, 09 Apr 2024 04:03:00 GMT   \n",
+       "..                            ...   \n",
+       "94  Mon, 08 Apr 2024 16:24:57 GMT   \n",
+       "95  Mon, 08 Apr 2024 13:20:18 GMT   \n",
+       "96  Mon, 08 Apr 2024 10:34:19 GMT   \n",
+       "97  Tue, 09 Apr 2024 01:03:00 GMT   \n",
+       "98  Mon, 08 Apr 2024 21:45:00 GMT   \n",
+       "\n",
+       "                                                  url  \\\n",
+       "0   https://news.google.com/rss/articles/CBMiPWh0d...   \n",
+       "1   https://news.google.com/rss/articles/CBMiVGh0d...   \n",
+       "2   https://news.google.com/rss/articles/CBMib2h0d...   \n",
+       "3   https://news.google.com/rss/articles/CBMiYWh0d...   \n",
+       "4   https://news.google.com/rss/articles/CBMigwFod...   \n",
+       "..                                                ...   \n",
+       "94  https://news.google.com/rss/articles/CBMiWmh0d...   \n",
+       "95  https://news.google.com/rss/articles/CBMib2h0d...   \n",
+       "96  https://news.google.com/rss/articles/CBMiZmh0d...   \n",
+       "97  https://news.google.com/rss/articles/CBMipAFod...   \n",
+       "98  https://news.google.com/rss/articles/CBMinQFod...   \n",
+       "\n",
+       "                                            publisher  \n",
+       "0   {'href': 'https://www.nytimes.com', 'title': '...  \n",
+       "1     {'href': 'https://www.cnn.com', 'title': 'CNN'}  \n",
+       "2   {'href': 'https://www.cnbc.com', 'title': 'CNBC'}  \n",
+       "3   {'href': 'https://www.nytimes.com', 'title': '...  \n",
+       "4   {'href': 'https://www.wsj.com', 'title': 'The ...  \n",
+       "..                                                ...  \n",
+       "94  {'href': 'https://www.koin.com', 'title': 'KOI...  \n",
+       "95  {'href': 'https://www.msnbc.com', 'title': 'MS...  \n",
+       "96  {'href': 'https://www.henleyglobal.com', 'titl...  \n",
+       "97  {'href': 'https://www.rockdalenewtoncitizen.co...  \n",
+       "98  {'href': 'https://www.wfaa.com', 'title': 'WFA...  \n",
+       "\n",
+       "[99 rows x 5 columns]"
+      ]
+     },
+     "execution_count": 47,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "e8116682-cb25-4294-9c44-2e085a2ea401",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Opinion | Good Economy, Negative Vibes: The Story Continues - The New York Times'"
+      ]
+     },
+     "execution_count": 54,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df.title[0]\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ffaa5e28-5633-4750-b26c-0dfe3cb52c2e",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
