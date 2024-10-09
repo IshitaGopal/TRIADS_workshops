@@ -1,11 +1,29 @@
-# Transdisciplinary Institute in Applied Data Sciences Training Series 
+# Transdisciplinary Institute in Applied Data Sciences Training Series
+Data Science workshops and tutorial on a variety of  topics (mostly in Python) taught in Spring and Fall 2024
 
-## Introduction to Text Analysis 
+## Introduction to Text Analysis
+- String manipulation
+- Text quantification using dictionaries
+- Building machine learning models, including:
+**Case Study**: Movie review classification to predict sentiment (positive/negative).
+  - Naive Bayes
+  - Support Vector Machines (SVM)
+  - Random Forest
+ 
+- [Slides]()
+- [Jupyter Notebook]()
+- [Data]()
 
-### Google Colab Notebooks:
-- [Day 1 - Working with strings](https://colab.research.google.com/drive/1RxcNLqLsAxl25CBdaRcdBtTFUKorCF1T?usp=sharing)
-- [Day 2 - Bag of Words](https://colab.research.google.com/drive/1Ku1NDJ5dlnyeB_xcIaPPz8Wl4r-gp_7E#scrollTo=sy0I6-OWqYvA)
-- [Day 3 - Dictionary Analysis](https://colab.research.google.com/drive/1TCQkKNAaXBpd7TRnBjc27vailQgj5Qs5?usp=sharing)
-- [Day 4 - Classification](https://colab.research.google.com/drive/14ZMpLiNp-rB33gXacP8Wdj_jcYNUUv68?usp=sharing)
+## Large Language Models
 
+- **Transfer Learning**: BERT and DistilBERT
+  - [Collab Notebook](https://colab.research.google.com/drive/1oZ9hIhZzqEehv18NqFRmuwbnCgBEgHzu#scrollTo=AL1mfqqqt3xe)
+- **Zero-Shot Text Classification**
+  - [Collab Notebook](https://colab.research.google.com/drive/1wz0btgzCYdXPzwVcuxCpRFiiJV13u7AZ?usp=sharing)
+- **Few-Shot Text Classification**
+  - [Collab Notebook](https://colab.research.google.com/drive/1DEX3-CxxoZi-2j6N54sUjF_BNxqk3ICq#scrollTo=n4FhH0b-y2wB)
 
+## Additional Topics
+
+- **Web Scraping**: scrape the UN website using Beautiful Soup.
+  - [Collab Notebook](https://colab.research.google.com/drive/1JVr6Rng36eXCqH6P5l6vdW_jYzjppjwN)
