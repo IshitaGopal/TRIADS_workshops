@@ -9,6 +9,7 @@ Data Science workshops and tutorial on a variety of  topics (mostly in Python) t
   - Support Vector Machines (SVM)
   - Random Forest
   - [Jupyter Notebook](text_analysis_in_Python/text_classification.ipynb)
+  - [Dictionaries](https://colab.research.google.com/drive/1TCQkKNAaXBpd7TRnBjc27vailQgj5Qs5)
   
 - [Slides](text_analysis_in_Python)
 
